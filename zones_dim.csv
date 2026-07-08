@@ -1,0 +1,34 @@
+zone_id,zone_name,city,zone_type
+Z1000,Kempegowda Airport,Bangalore,Airport
+Z1001,Indiranagar,Bangalore,Nightlife
+Z1002,Koramangala,Bangalore,Nightlife
+Z1003,Whitefield,Bangalore,Tech park
+Z1004,Electronic City,Bangalore,Tech park
+Z1005,MG Road,Bangalore,Business
+Z1006,Jayanagar,Bangalore,Residential
+Z1007,Chhatrapati Shivaji Airport,Mumbai,Airport
+Z1008,Bandra,Mumbai,Nightlife
+Z1009,Lower Parel,Mumbai,Business
+Z1010,Andheri East,Mumbai,Tech park
+Z1011,Powai,Mumbai,Residential
+Z1012,Colaba,Mumbai,Business
+Z1013,IGI Airport,Delhi NCR,Airport
+Z1014,Hauz Khas,Delhi NCR,Nightlife
+Z1015,Connaught Place,Delhi NCR,Business
+Z1016,Gurugram Cyber City,Delhi NCR,Tech park
+Z1017,Noida Sector 62,Delhi NCR,Tech park
+Z1018,Dwarka,Delhi NCR,Residential
+Z1019,Rajiv Gandhi Airport,Hyderabad,Airport
+Z1020,Hitech City,Hyderabad,Tech park
+Z1021,Banjara Hills,Hyderabad,Nightlife
+Z1022,Gachibowli,Hyderabad,Tech park
+Z1023,Kukatpally,Hyderabad,Residential
+Z1024,Chennai Airport,Chennai,Airport
+Z1025,OMR,Chennai,Tech park
+Z1026,T Nagar,Chennai,Business
+Z1027,Velachery,Chennai,Residential
+Z1028,Nungambakkam,Chennai,Nightlife
+Z1029,Pune Airport,Pune,Airport
+Z1030,Hinjewadi,Pune,Tech park
+Z1031,Koregaon Park,Pune,Nightlife
+Z1032,Viman Nagar,Pune,Residential
