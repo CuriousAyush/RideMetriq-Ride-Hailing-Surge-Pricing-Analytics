@@ -422,13 +422,6 @@ ORDER BY current_avg_surge DESC;
 
 -- 8l. NEW — WINDOW FUNCTION QUERY
 -- Per-ride surge multiplier alongside its zone's average, using OVER/PARTITION BY.
--- Unlike GROUP BY (which collapses rows into one summary row per zone), this
--- keeps every individual ride visible while still showing the zone-level
--- context next to it — useful for spotting specific rides that surged well
--- above or below their zone's typical pattern.
--- Can extend the Page 2 "Surge Tolerance by Zone Type" scatter chart by
--- adding an optional drill-through table of the top outlier rides per zone,
--- or stand alone as a new supporting table on that page.
 SELECT
     ride_id,
     rider_id,
@@ -438,3 +431,34 @@ SELECT
     ROUND(surge_multiplier - AVG(surge_multiplier) OVER (PARTITION BY zone_type), 2) AS diff_from_zone_avg
 FROM rides_fact
 ORDER BY zone_type, diff_from_zone_avg DESC;
+
+--=====================================================================
+-- FOR RECOMMENDATION 
+-- 8m. Cancellation rate and revenue, broken down by zone type AND surge band
+-- The direct evidence behind the per-zone recommended caps
+WITH banded_rides AS (
+    SELECT
+        zone_type,
+        CASE
+            WHEN surge_multiplier < 1.1 THEN '1.0x'
+            WHEN surge_multiplier < 1.3 THEN '1.1-1.3x'
+            WHEN surge_multiplier < 1.5 THEN '1.3-1.5x'
+            WHEN surge_multiplier < 1.8 THEN '1.5-1.8x'
+            WHEN surge_multiplier < 2.2 THEN '1.8-2.2x'
+            ELSE '2.2x+'
+        END AS surge_band,
+        ride_status,
+        surge_multiplier,
+        final_fare
+    FROM rides_fact
+)
+SELECT
+    zone_type,
+    surge_band,
+    COUNT(*) AS total_rides,
+    ROUND(100.0 * COUNT(*) FILTER (WHERE ride_status != 'Completed') / COUNT(*), 1) AS cancel_rate_pct,
+    ROUND(SUM(final_fare) FILTER (WHERE ride_status = 'Completed'), 0) AS revenue_in_band
+FROM banded_rides
+GROUP BY zone_type, surge_band
+ORDER BY zone_type, MIN(surge_multiplier);
+
