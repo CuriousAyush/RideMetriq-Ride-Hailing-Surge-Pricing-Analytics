@@ -47,7 +47,8 @@ This project provides an end-to-end analytical solution: cleaning raw, messy rid
 <img width="1282" height="722" alt="image" src="https://github.com/user-attachments/assets/31edf567-2939-4c0e-91c6-13adce9aadd7" />
 
 ### [Page 3 — Recommendation]
-<img width="1282" height="722" alt="image" src="https://github.com/user-attachments/assets/55bfdb2e-ee8e-406d-adac-91944ef3cb7d" />
+<img width="1117" height="628" alt="image" src="https://github.com/user-attachments/assets/5dc39d57-566d-45b1-a31c-92febaf0b47a" />
+
 
 
 ---
